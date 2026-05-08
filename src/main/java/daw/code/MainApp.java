@@ -1,4 +1,4 @@
-package dam.code;
+package daw.code;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ public class MainApp extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 400, 400);
 
-        stage.setTitle("Gestion de Personas");
+        stage.setTitle("Compra/Venta de Videojuegos");
         stage.setScene(scene);
         stage.show();
     }
