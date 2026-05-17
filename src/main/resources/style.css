@@ -1,0 +1,89 @@
+/* Fondo general de la aplicación */
+.root {
+    -fx-background-color: #f5f6fa; /* Gris claro muy limpio */
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Títulos de las pantallas */
+.label {
+    -fx-text-fill: #2f3640; /* Gris oscuro para el texto */
+}
+
+/* Cajas de texto y Desplegables */
+.text-field, .combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdde1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6;
+}
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #718093; /* Borde más oscuro al hacer clic */
+}
+
+/* --- ESTILO BASE PARA TODOS LOS BOTONES --- */
+.button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+/* 1. BOTÓN COMPRAR (Verde) */
+.btn-buy {
+    -fx-background-color: #4cd137;
+}
+.btn-buy:hover {
+    -fx-background-color: #44bd32;
+}
+
+/* 2. BOTÓN IR A VENDER (Azul) */
+.btn-sell {
+    -fx-background-color: #00a8ff;
+}
+.btn-sell:hover {
+    -fx-background-color: #0097e6;
+}
+
+/* 3. BOTÓN LIMPIAR FILTROS (Gris) */
+.btn-clear {
+    -fx-background-color: #718093;
+}
+.btn-clear:hover {
+    -fx-background-color: #636e72;
+}
+
+/* 4. BOTÓN PUBLICAR ANUNCIO (Rojo / Coral) */
+.btn-publish {
+    -fx-background-color: #e84118;
+}
+.btn-publish:hover {
+    -fx-background-color: #c23616;
+}
+
+/* 5. BOTÓN VOLVER (Gris Oscuro) */
+.btn-back {
+    -fx-background-color: #353b48;
+}
+.btn-back:hover {
+    -fx-background-color: #2f3640;
+}
+
+/* --- ESTILO DE LA TABLA --- */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dcdde1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.table-view .column-header {
+    -fx-background-color: #718093; /* Encabezado gris profesional */
+}
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell:selected {
+    -fx-background-color: #dcdde1; /* Color gris suave al seleccionar fila */
+}

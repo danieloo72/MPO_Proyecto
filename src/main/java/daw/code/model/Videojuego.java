@@ -1,23 +1,27 @@
 package daw.code.model;
 
 public class Videojuego {
-
     private int id;
     private String nombre;
     private String categoria;
     private int precio;
+    private String estado; // Nuevo campo
 
-    public Videojuego(String nombre, String categoria, int precio) {
+    // Constructor para nuevos juegos (sin ID)
+    public Videojuego(String nombre, String categoria, int precio, String estado) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
+        this.estado = estado;
     }
 
-    public Videojuego(int id, String nombre, String categoria, int precio) {
+    // Constructor completo (con ID para cargar de la DB)
+    public Videojuego(int id, String nombre, String categoria, int precio, String estado) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -50,5 +54,13 @@ public class Videojuego {
 
     public void setPrecio(int precio) {
         this.precio = precio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

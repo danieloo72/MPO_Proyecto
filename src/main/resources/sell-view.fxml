@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="daw.code.controller.SellController"
+      stylesheets="@style.css" style="-fx-padding: 30;">
+
+    <Label text="VENDER VIDEOJUEGO" style="-fx-font-size: 18px;"/>
+
+    <TextField fx:id="txtNombre" promptText="Nombre del juego"/>
+    <TextField fx:id="txtCategoria" promptText="Categoría"/>
+    <TextField fx:id="txtPrecio" promptText="Precio"/>
+
+    <ComboBox fx:id="cmbEstado" promptText="Selecciona el estado" prefWidth="200"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Publicar para Vender" onAction="#publicarJuego" styleClass="btn-publish"/>
+        <Button text="Volver a la Tienda" onAction="#volverTienda" styleClass="btn-back"/>
+    </HBox>
+</VBox>

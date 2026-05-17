@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="daw.code.controller.MarketController"
+      stylesheets="@style.css" style="-fx-padding: 20;">
+
+    <Label text="TIENDA DE VIDEOJUEGOS" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="txtBuscarNombre" promptText="Buscar por nombre..." prefWidth="150"/>
+        <TextField fx:id="txtBuscarPrecio" promptText="Precio máx..." prefWidth="100"/>
+        <ComboBox fx:id="cmbFiltrarEstado" promptText="Estado..." prefWidth="120"/>
+        <Button text="Limpiar" onAction="#limpiarFiltros" styleClass="btn-clear"/>
+    </HBox>
+
+    <TableView fx:id="tablaVideojuegos" VBox.vgrow="ALWAYS">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+
+        <columns>
+            <TableColumn fx:id="colNombre" text="Título"/>
+            <TableColumn fx:id="colCategoria" text="Género"/>
+            <TableColumn fx:id="colPrecio" text="Precio (€)"/>
+            <TableColumn fx:id="colEstado" text="Estado"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Comprar Seleccionado" onAction="#comprarJuego" styleClass="btn-buy"/>
+        <Button text="Ir a Vender mi Juego" onAction="#irAVender" styleClass="btn-sell"/>
+    </HBox>
+</VBox>

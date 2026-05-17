@@ -1,62 +1,83 @@
 package daw.code.controller;
 
-import com.sun.javafx.scene.control.IntegerField;
 import daw.code.model.Videojuego;
 import daw.code.service.VideojuegoService;
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.css.SimpleStyleableIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * Controlador para gestionar las operaciones relacionadas con los videojuegos
+ */
 public class VidejuegoController {
 
     private final VideojuegoService service = new VideojuegoService();
 
     @FXML private TextField txtNombre;
     @FXML private TextField txtCategoria;
-    @FXML private IntegerField txtPrecio;
+    @FXML private TextField txtPrecio;
+    @FXML private TextField txtEstado;
 
     @FXML private TableView<Videojuego> tablaVideojuego;
     @FXML private TableColumn<Videojuego, String> colNombre;
     @FXML private TableColumn<Videojuego, String> colCategoria;
     @FXML private TableColumn<Videojuego, Integer> colPrecio;
+    @FXML private TableColumn<Videojuego, String> colEstado;
 
+    /**
+     * Metodo que inicializa el FXML
+     */
     @FXML
     private void initialize(){
         prefWidthColumns();
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
+
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+         colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+
         tablaVideojuego.setItems(service.getVideojuegos());
+    }
+
+    /**
+     * Metodo para insertar las caracteristicas del videojuego nuevo
+     */
+    @FXML
+    public void addVideojuego() {
+        try {
+            Videojuego videojuego = new Videojuego(
+                    txtNombre.getText(),
+                    txtCategoria.getText(),
+                    Integer.parseInt(txtPrecio.getText()),
+                    txtEstado.getText()
+            );
+
+            service.registrar(videojuego);
+            limpiarCampos();
+            tablaVideojuego.setItems(service.getVideojuegos());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: El precio debe ser un número entero.");
+        }
+    }
+
+    /**
+     * Metodo que resetea el filtrado de los videojuegos buscados
+     */
+    private void limpiarCampos() {
+        txtNombre.clear();
+        txtCategoria.clear();
+        txtPrecio.clear();
+        txtEstado.clear();
     }
 
     private void prefWidthColumns() {
         tablaVideojuego.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
-
-        colNombre.prefWidthProperty().bind(tablaVideojuego.widthProperty().multiply(0.4));
+        colNombre.prefWidthProperty().bind(tablaVideojuego.widthProperty().multiply(0.3));
         colCategoria.prefWidthProperty().bind(tablaVideojuego.widthProperty().multiply(0.3));
-        colPrecio.prefWidthProperty().bind(tablaVideojuego.widthProperty().multiply(0.3));
-    }
-
-    @FXML
-    public void addVideojuego() {
-        Videojuego videojuego = new Videojuego(
-                txtNombre.getText(),
-                txtCategoria.getText(),
-                txtPrecio.getValue()
-        );
-        service.registrar(videojuego);
-        limpiarCampos();
-        tablaVideojuego.setItems(service.getVideojuegos());
-    }
-
-    private void limpiarCampos() {
-        txtNombre.clear();
-        txtCategoria.clear();
-        txtPrecio.setValue(0);
+        colPrecio.prefWidthProperty().bind(tablaVideojuego.widthProperty().multiply(0.2));
     }
 }
