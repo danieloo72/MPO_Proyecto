@@ -8,9 +8,11 @@
 
     <Label text="VENDER VIDEOJUEGO" style="-fx-font-size: 18px;"/>
 
-    <TextField fx:id="txtNombre" promptText="Nombre del juego"/>
-    <TextField fx:id="txtCategoria" promptText="Categoría"/>
+    <TextField fx:id="txtUsuario" promptText="Nombre de usuario / vendedor"/>
+    <TextField fx:id="txtNombre" promptText="Nombre del videojuego"/>
     <TextField fx:id="txtPrecio" promptText="Precio"/>
+
+    <ComboBox fx:id="cmbCategoria" promptText="Selecciona la categoría" prefWidth="200"/>
 
     <ComboBox fx:id="cmbEstado" promptText="Selecciona el estado" prefWidth="200"/>
 

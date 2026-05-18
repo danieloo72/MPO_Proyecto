@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Clase principal de la aplicación.
+ * Clase principal de la aplicacion
+ *
+ * @author Alumno - Daniel
+ * @version 1.0
  */
 public class MainApp extends Application {
     /**

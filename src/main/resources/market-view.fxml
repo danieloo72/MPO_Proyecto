@@ -19,17 +19,17 @@
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
         </columnResizePolicy>
-
         <columns>
             <TableColumn fx:id="colNombre" text="Título"/>
             <TableColumn fx:id="colCategoria" text="Género"/>
             <TableColumn fx:id="colPrecio" text="Precio (€)"/>
             <TableColumn fx:id="colEstado" text="Estado"/>
+            <TableColumn fx:id="colUsuario" text="Vendedor"/>
         </columns>
     </TableView>
 
     <HBox spacing="10" alignment="CENTER">
-        <Button text="Comprar Seleccionado" onAction="#comprarJuego" styleClass="btn-buy"/>
-        <Button text="Ir a Vender mi Juego" onAction="#irAVender" styleClass="btn-sell"/>
+        <Button text="Comprar Videojuego Seleccionado" onAction="#comprarJuego" styleClass="btn-buy"/>
+        <Button text="Vender mi Videojuego" onAction="#irAVender" styleClass="btn-sell"/>
     </HBox>
 </VBox>

@@ -1,8 +1,9 @@
 package daw.code.controller;
 
+import daw.code.exceptions.VideojuegoException;
 import daw.code.model.Videojuego;
 import daw.code.service.VideojuegoService;
-import javafx.beans.property.SimpleStringProperty;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,6 +21,7 @@ public class VidejuegoController {
     @FXML private TextField txtCategoria;
     @FXML private TextField txtPrecio;
     @FXML private TextField txtEstado;
+    @FXML private TextField txtUsuario;
 
     @FXML private TableView<Videojuego> tablaVideojuego;
     @FXML private TableColumn<Videojuego, String> colNombre;
@@ -44,15 +46,17 @@ public class VidejuegoController {
 
     /**
      * Metodo para insertar las caracteristicas del videojuego nuevo
+     * @throws VideojuegoException ocurre si hay un error al registrar el videojuego
      */
     @FXML
-    public void addVideojuego() {
+    public void addVideojuego() throws VideojuegoException {
         try {
             Videojuego videojuego = new Videojuego(
                     txtNombre.getText(),
                     txtCategoria.getText(),
                     Integer.parseInt(txtPrecio.getText()),
-                    txtEstado.getText()
+                    txtEstado.getText(),
+                    txtUsuario.getText()
             );
 
             service.registrar(videojuego);
@@ -61,6 +65,8 @@ public class VidejuegoController {
 
         } catch (NumberFormatException e) {
             System.out.println("Error: El precio debe ser un número entero.");
+        } catch (VideojuegoException e) {
+            throw new VideojuegoException("No se ha podido registrar el videojuego");
         }
     }
 
